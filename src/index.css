@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens */
+:root {
+  --accent: #FF8500;
+  --primary: #111111;
+  --secondary: #777777;
+  --bg: #F7F7F8;
+}
+
+/* Safe area support */
+body {
+  font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  margin: 0;
+}
+
+/* central mobile container max width for iPhones */
+#root > div {
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+/* small animation helpers */
+.fade-enter { opacity: 0; transform: translateY(8px); }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: all .28s cubic-bezier(.2,.9,.2,1); }
+.pulse-soft { animation: pulse 2s infinite; opacity: .95; }
+@keyframes pulse { 0% { transform: scale(1) } 50% { transform: scale(1.01)} 100% { transform: scale(1)} }
+
+/* card radius & utility */
+.rounded-card { border-radius: 24px; }
+
+/* subtle shadows */
+.shadow-soft { box-shadow: 0 8px 20px rgba(17,17,17,0.06); }
+.shadow-subtle { box-shadow: 0 6px 14px rgba(17,17,17,0.04); }
+
+/* RTL fixes */
+[dir="rtl"] .ltr { direction: ltr; text-align: left; }
+
+/* bottom nav safe area handling */
+nav[role="navigation"] { padding-bottom: calc(env(safe-area-inset-bottom) + 8px); }
+
+/* responsiveness tweaks for the target widths */
+@media (max-width: 430px) {
+  .rounded-card { border-radius: 20px; }
+  .text-2xl { font-size: 20px; }
+}
